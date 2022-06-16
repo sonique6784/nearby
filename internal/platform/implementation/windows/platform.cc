@@ -24,6 +24,7 @@
 #include <winver.h>
 
 #include <memory>
+#include <optional>
 #include <sstream>
 #include <string>
 
@@ -413,6 +414,12 @@ std::unique_ptr<WifiLanMedium> ImplementationPlatform::CreateWifiLanMedium() {
 std::unique_ptr<WifiHotspotMedium>
 ImplementationPlatform::CreateWifiHotspotMedium() {
   return std::make_unique<windows::WifiHotspotMedium>();
+}
+
+std::unique_ptr<WifiDirectMedium>
+ImplementationPlatform::CreateWifiDirectMedium() {
+  return nullptr;
+  // return std::make_unique<windows::WifiDirectMedium>();
 }
 
 // TODO(b/184975123): replace with real implementation.
