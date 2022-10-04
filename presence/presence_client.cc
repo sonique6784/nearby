@@ -15,9 +15,9 @@
 #include "presence/presence_client.h"
 
 #include <memory>
+#include <utility>
 #include <vector>
 
-#include "presence/presence_device.h"
 #include "presence/status.h"
 
 namespace nearby {
@@ -25,7 +25,7 @@ namespace presence {
 
 std::unique_ptr<ScanSession> PresenceClient::StartScan(ScanRequest scan_request,
                                                        ScanCallback callback) {
-  callback.start_scan_cb({Status::Value::kError});
+  std::move(callback).start_scan_cb({Status::Value::kError});
   return nullptr;
 }
 std::unique_ptr<BroadcastSession> PresenceClient::StartBroadcast(

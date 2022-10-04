@@ -22,6 +22,7 @@ cc_library(
         "base_broadcast_request.cc",
         "credential_manager_impl.cc",
         "encryption.cc",
+        "scan_manager.cc",
     ],
     hdrs = [
         "action_factory.h",
@@ -44,6 +45,7 @@ cc_library(
         "//internal/crypto",
         "//internal/platform:base",
         "//internal/platform:comm",
+        "//internal/platform:connection_info",
         "//internal/platform:logging",
         "//internal/platform:uuid",
         "//internal/platform/implementation:comm",
@@ -53,6 +55,10 @@ cc_library(
         "//presence/implementation/mediums",
         "//third_party/tink/cc/subtle",
         "@boringssl//:crypto",
+        "@com_google_absl//absl/container:flat_hash_map",
+        "@com_google_absl//absl/functional:any_invocable",
+        "@com_google_absl//absl/random",
+        "@com_google_absl//absl/random:distributions",
         "@com_google_absl//absl/status",
         "@com_google_absl//absl/status:statusor",
         "@com_google_absl//absl/strings",
@@ -156,6 +162,23 @@ cc_test(
         "//internal/platform/implementation/g3",  # build_cleaner: keep
         "//internal/proto:credential_cc_proto",
         "@com_github_protobuf_matchers//protobuf-matchers",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "scan_manager_test",
+    size = "small",
+    srcs = ["scan_manager_test.cc"],
+    deps = [
+        ":internal",
+        "//internal/platform:comm",
+        "//internal/platform:test_util",
+        "//internal/platform:types",
+        "//internal/platform/implementation/g3",  # build_cleaner: keep
+        "//presence/implementation/mediums",
+        "@com_github_protobuf_matchers//protobuf-matchers",
+        "@com_google_absl//absl/random",
         "@com_google_googletest//:gtest_main",
     ],
 )

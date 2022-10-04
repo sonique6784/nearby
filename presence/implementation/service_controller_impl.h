@@ -17,6 +17,7 @@
 
 #include "presence/implementation/credential_manager_impl.h"
 #include "presence/implementation/mediums/mediums.h"
+#include "presence/implementation/scan_manager.h"
 #include "presence/implementation/service_controller.h"
 
 /*
@@ -31,6 +32,7 @@ class ServiceControllerImpl : public ServiceController {
   Mediums mediums_;  // NOLINT: further impl will use it.
   CredentialManagerImpl
       credential_manager_;  // NOLINT: further impl will use it.
+  ScanManager scan_manager_;  // NOLINT: further impl will use it.
 };
 
 }  // namespace presence

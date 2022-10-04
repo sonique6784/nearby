@@ -25,7 +25,7 @@ namespace presence {
 
 // Holds the callback of stop scan for client to invoke later.
 struct ScanSession {
-  std::function<void(Status)> stop_scan_callback;
+  std::function<Status(void)> stop_scan_callback;
 };
 
 struct ScanCallback {
