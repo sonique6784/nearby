@@ -128,7 +128,7 @@ $(DIST_DIR)/nearby.h: common/target/nearby.h
 
 define copy_dist_header
 	@mkdir -p $(dir $@)
-	@test "$$(head -n 2 $< | grep 'Copyright [0-9]\{4\} Google LLC.')" != "" || \
+	@test "$$(head -n 2 $< | grep 'Copyright [0-9]\{4\} Google LLC')" != "" || \
 		(echo ; echo  "=====ERROR=====" ; echo "Missing copyright in $<" ; exit 1)
 	unifdef -t -b -x2 $(UNIFDEF_ARG) -o - $<  | cat - >$@
 	@# (mkartoz) Should be able to specify $@ as the output directly from
